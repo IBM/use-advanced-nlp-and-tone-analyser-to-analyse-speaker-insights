@@ -99,9 +99,9 @@ $ git clone https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse
 
 - In the repo parent folder, copy and pate the **credentials.json** file created in [first code pattern of the series](https://github.com/IBM/convert-video-to-audio). This will connect the application to the same Cloud Object Storage Bucket which was created in the first code pattern of the series.
 
-- In the repo parent folder, open the **credentials1.json** file and paste the credentials copied in [step 2.1](#2.1-create-natural-language-understanding-service) and finally save the file.
+- In the repo parent folder, open the **credentials1.json** file and paste the credentials copied in [step 2.1](#21-create-natural-language-understanding-service) and finally save the file.
 
-- In the repo parent folder, open the **credentials2.json** file and paste the credentials copied in [step 2.2](#2.2-create-tone-analyzer-service) and finally save the file.
+- In the repo parent folder, open the **credentials2.json** file and paste the credentials copied in [step 2.2](#22-create-tone-analyzer-service) and finally save the file.
 
 
 ### 4. Deploy the Application
