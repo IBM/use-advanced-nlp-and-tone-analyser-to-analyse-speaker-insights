@@ -1,0 +1,14 @@
+.custom-container {
+    margin-top: 5%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.scrollClass {
+    height: 600px;
+    overflow-y: scroll;
+}
+
+.center {
+    border: 3px solid green;
+}

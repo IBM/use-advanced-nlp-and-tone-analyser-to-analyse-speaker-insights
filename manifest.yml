@@ -1,0 +1,5 @@
+---
+applications:
+ - name: use-nlp-to-get-speaker-insights
+   random-route: true
+   memory: 256M
