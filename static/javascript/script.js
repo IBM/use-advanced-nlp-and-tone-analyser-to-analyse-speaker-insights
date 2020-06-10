@@ -38,8 +38,6 @@ $(document).ready(function() {
     uploaded2.style.display = "none";
     scrollClass.style.display = "none";
     getCOSCredentials();
-
-    clickBtn2.click();
 });
 
 var addSerialNumber = function() {
@@ -48,12 +46,51 @@ var addSerialNumber = function() {
     });
 };
 
+async function setupCOS() {
+    setTimeout(function() {
+        let bkt = { bucket_name: document.getElementById('bucket-name-setup').value };
+        let formData = new FormData();
+        formData.append("bkt", JSON.stringify(bkt));
+
+        $.ajax({
+            url: '/COSBucket',
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(myData) {
+                if (myData.flag == 0)
+                    location.reload();
+            },
+            error: function() {
+                error2.style.display = "block";
+            }
+        });
+    }, 1000);
+}
+
 async function getCOSCredentials() {
     await fetch('/initCOS').then(async(response) => {
         data = await response.json();
-        cosNotify.innerHTML = " ";
-        cosNotify.innerHTML = data.message;
-        toast.style.display = "block";
+
+        temp = data.message.split(' ');
+
+        if (temp[temp.length - 1] == "found!") {
+
+        } else {
+            cosNotify.innerHTML = " ";
+            cosNotify.innerHTML = data.message;
+            toast.style.display = "block";
+        }
+
+        if (data.message == " 'bucket_name'") {
+            showModal.click();
+            cosNotify.innerHTML = " ";
+            cosNotify.innerHTML = "Object Storage Bucket NOT Specified!, Refresh the page to configure.";
+            toast.style.display = "block";
+        } else
+            clickBtn2.click();
 
     });
 }

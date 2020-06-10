@@ -39,7 +39,7 @@ COS_API_KEY_ID = ""
 COS_AUTH_ENDPOINT = ""
 COS_RESOURCE_CRN = ""
 COS_BUCKET_LOCATION = "us-standard"
-bucket_name = "text-mining"
+bucket_name = ""
 
 # Constants for NLU & Tone Analyzer values
 NLU_API_KEY_ID = ""
@@ -63,6 +63,12 @@ cos_host = (endpoints['service-endpoints']
 auth_endpoint = "https://" + iam_host + "/identity/token"
 service_endpoint = "https://" + cos_host
 
+# Assign Bucket Name
+try:
+    bucket_name = credentials.get('bucket_name')
+except Exception as e:
+    bucket_name = "notassigned"
+
 # Set Constants for IBM COS values
 COS_ENDPOINT = service_endpoint
 COS_API_KEY_ID = credentials.get('apikey')
@@ -80,24 +86,44 @@ cos = ibm_boto3.resource("s3",
                          )
 
 
+@app.route('/COSBucket',  methods=['GET', 'POST'])
+def setupCOSBucket():
+    if request.method == 'POST':
+        temp = request.form
+        bkt = json.loads(temp['bkt'])
+        with open('credentials.json', 'r') as credentialsFile:
+            cred = json.loads(credentialsFile.read())
+        cred.update(bkt)
+        print(json.dumps(cred, indent=2))
+        with open('credentials.json', 'w') as fp:
+            json.dump(cred, fp,  indent=2)
+        return jsonify({'flag': 0})
+
+
 @app.route('/initCOS')
 def initializeCOS():
     try:
+        global bucket_name
+        flag = False
         buckets = cos.buckets.all()
+        with open('credentials.json', 'r') as credentialsFile:
+            cred = json.loads(credentialsFile.read())
         for bucket in buckets:
-            if bucket_name == bucket.name:
+            if cred['bucket_name'] == bucket.name:
                 flag = True
+                bucket_name = cred['bucket_name']
                 break
         if not flag:
             respo = {"message": "Bucket \"" +
                      bucket_name + "\" does not exists"}
         else:
             respo = {"message": "Bucket \"" + bucket_name + "\" found!"}
+
     except ClientError as be:
         respo = {"message": "CLIENT ERROR: {0}\n".format(be)}
     except Exception as e:
         respo = {"message": " {0}".format(e)}
-
+    print(json.dumps(respo, indent=2))
     return json.dumps(respo, indent=2)
 
 
