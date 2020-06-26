@@ -176,7 +176,7 @@ def getAudioFiles():
 
 ''' Methods for IBM Watson Natural Language Understanding '''
 
-with open('credentials1.json', 'r') as credentialsFile:
+with open('naturallanguageunderstanding.json', 'r') as credentialsFile:
     credentials1 = json.loads(credentialsFile.read())
 
 NLU_API_KEY_ID = credentials1.get('apikey')
@@ -192,7 +192,7 @@ natural_language_understanding.set_service_url(NLU_URL)
 
 ''' Methods for IBM Watson Tone Analyser '''
 
-with open('credentials2.json', 'r') as credentialsFile:
+with open('toneanalyzer.json', 'r') as credentialsFile:
     credentials2 = json.loads(credentialsFile.read())
 
 TONE_API_KEY_ID = credentials2.get('apikey')
@@ -520,7 +520,7 @@ def convert_size(size_bytes):
     return "%s %s" % (s, size_name[i])
 
 
-port = os.getenv('VCAP_APP_PORT', '8082')
+port = os.getenv('VCAP_APP_PORT', '8080')
 if __name__ == "__main__":
     app.secret_key = os.urandom(12)
     app.run(debug=True, host='0.0.0.0', port=port)

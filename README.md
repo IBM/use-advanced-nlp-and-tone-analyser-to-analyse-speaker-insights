@@ -4,13 +4,8 @@
 
 This Code Pattern is part of the series [Extracting Textual Insights from Videos with IBM Watson]()
 
-Part of the World Health Organization's guidance on limiting further spread of COVID-19 is to practice social distancing. As a result, Companies in most affected areas are taking precautionary measures by encouraging Work from Home and Educational Institutes are closing their facilities. Employees working from home must be aware of the happenings in their company and need to collaborate with their team, students at home must be up to date with their education.
 
-With the help of Technology, employees can continue to collaborate and be involved into their work with Virtual Meetings, Schools and teachers can continue to engage with their students through Virtual Classrooms.
-
-In this code pattern, we will consume the transcribed text from [previous code pattern of the series](https://github.com/IBM/build-custom-stt-model-with-diarization) to extract key points and summary.
-
-Given a video recording of the virtual meeting or a virtual classroom, textual insights are extracted from them to better understand the key pointer and summary of the meeting or lecture.
+In this code pattern, given a text file, we learn how to extract keywords, emotions, sentiments, positive sentences, and much more using Watson Natural Language Understanding and Tone Analyzer.
 
 When you have completed this code pattern, you will understand how to:
 
@@ -69,15 +64,34 @@ Clone the [`use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights`](htt
 $ git clone https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights
 ```
 
+We will be using the following datasets from the Cloud Object Storage:
+
+1. `earnings-call-test-data.txt` - To extract Keywords, sentiments, emotions, positive sentences, and more.
+
+3. `earnings-call-Q-and-A.txt` - To extract Keywords, sentiments, emotions, positive sentences, and more.
+
+### About the dataset
+
+For the code pattern demonstration, we have considered `IBM Earnings Call Q1 2019` Webex recording. The data has 40min of IBM Revenue discussion, and 20+ min of Q & A at the end of the recording. We have split the data into 3 parts:
+
+* `earnings-call-train-data.mp4` - (Duration - 24:40)
+This is the initial part of the discussion from the recording which we will be using to train the custom Watson Speech To Text model in the second code pattern from the series.
+
+* `earnings-call-test-data.mp4` - (Duration - 36:08)
+This is the full discussion from the recording which will be used to test the custom Speech To Text model and also to get transcript for further analysis in the third code patten from the series.
+
+* `earnings-call-Q-and-A.mp4` - (Duration - 2:40)
+This is a part of Q & A's asked at the end of the meeting. The purpose of this data is to demonstrate how Watson Speech To Text can detect different speakers from an audio which will be demonstrated in the second code pattern from the series.
+
 ### 2. Create Watson Service
 
 #### 2.1 Create Natural Language Understanding Service
 
-- Create a [Natural Language Understanding Service](https://cloud.ibm.com/catalog/services/natural-language-understanding) on IBM Cloud.
+- On IBM Cloud, create a [Natural Language Understanding](https://cloud.ibm.com/catalog/services/natural-language-understanding) service.
 
 ![nlu-service](doc/source/images/nlu-service.png)
 
-- In Natural Language Understanding Resource Page, Click on **Services Credentials**
+- In Natural Language Understanding Dashboard, Click on **Services Credentials**
 
 - Click on **New credential** and add a service credential as shown. Once the credential is created, copy and save the credentials in a text file for using it in later steps in this code pattern.
 
@@ -85,11 +99,11 @@ $ git clone https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse
 
 #### 2.2 Create Tone Analyzer Service
 
-- Create a [Tone Analyzer Service](https://cloud.ibm.com/catalog/services/tone-analyzer) on IBM Cloud.
+- On IBM Cloud, create a [Tone Analyzer](https://cloud.ibm.com/catalog/services/tone-analyzer) service.
 
 ![tone-service](doc/source/images/tone-service.png)
 
-- In Tone Analyzer Resource Page, Click on **Services Credentials**
+- In Tone Analyzer Dashboard, Click on **Services Credentials**
 
 - Click on **New credential** and add a service credential as shown. Once the credential is created, copy and save the credentials in a text file for using it in later steps in this code pattern.
 
@@ -97,11 +111,11 @@ $ git clone https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse
 
 ### 3. Add the Credentials to the Application
 
-- In the repo parent folder, copy and pate the **credentials.json** file created in [first code pattern of the series](https://github.com/IBM/convert-video-to-audio). This will connect the application to the same Cloud Object Storage Bucket which was created in the first code pattern of the series.
+- In the [first code pattern](https://github.com/IBM/convert-video-to-audio) cloned repo, you will have updated **credentials.json** file with cloud object storage credentials. Copy that file and paste it in parent folder of the repo that you cloned in [step 1](#1-clone-the-repo).
 
-- In the repo parent folder, open the **credentials1.json** file and paste the credentials copied in [step 2.1](#2.1-create-natural-language-understanding-service) and finally save the file.
+- In the repo parent folder, open the **naturallanguageunderstanding.json** file and paste the credentials copied in [step 2.1](#2.1-create-natural-language-understanding-service) and save the file.
 
-- In the repo parent folder, open the **credentials2.json** file and paste the credentials copied in [step 2.2](#2.2-create-tone-analyzer-service) and finally save the file.
+- Similarly, in the repo parent folder, open the **toneanalyzer.json** file and paste the credentials copied in [step 2.2](#2.2-create-tone-analyzer-service) and save the file.
 
 
 ### 4. Deploy the Application
@@ -160,30 +174,30 @@ $ python app.py
 
 1. Click on `earnings-call-test-data.txt` as the text file to extract insights.
 
-2. Select the entities that you want to extract from the text and click on **Analyze**.
+2. Select the entities that you want to extract from the text and click on **Analyze** as shown.
 
 ![step1](doc/source/images/step1.gif)
 
-- Once the NLU Analysis Report is generated you can review it and print it as shown.
+>- More about the entities:
+>    - `Category` - Categorize your content using a five-level classification hierarchy. View the complete list of categories [here](https://cloud.ibm.com/docs/natural-language-understanding?topic=natural-language-understanding-categories-hierarchy).
+>    - `Concept Tags`: Identify high-level concepts that aren't necessarily directly referenced in the text.
+>    - `Entity`: Find people, places, events, and other types of entities mentioned in your content. View the complete list of entity types and subtypes [here](https://cloud.ibm.com/docs/natural-language-understanding?topic=natural-language-understanding-entity-type-systems).
+>    - `Keywords`: Search your content for relevant keywords.
+>    - `Sentiments`: Analyze the sentiment toward specific target phrases and the sentiment of the document as a whole.
+>    - `Emotions`: Analyze emotion conveyed by specific target phrases or by the document as a whole.
+>    - `Positive sentences`: The Watson Tone Analyzer service uses linguistic analysis to detect emotional and language tones in written text
+
+>- Learn more features of:
+>   - Watson Natural Language Understanding service. [Learn more](https://cloud.ibm.com/docs/natural-language-understanding?topic=natural-language-understanding-about).
+>   - Watson Tone Analyzer service. [Learn more](https://cloud.ibm.com/docs/tone-analyzer?topic=tone-analyzer-gettingStarted).
+
+- Once the NLU Analysis Report is generated you can review it and print it by clicking on the print button as shown.
 
 ![step2](doc/source/images/step2.gif)
 
-### More About the dataset
+### Summary
 
-For the code pattern demonstration, we have considered `IBM Earnings Call Q1 2019` Webex recording. The data has 40min of IBM Revenue discussion, and 20+ min of Q & A at the end of the recording. We have split the data into 3 parts:
-
-- `earnings-call-train-data.mp4` - (Duration - 24:40)
-This is the initial part of the discussion from the recording which we will be using to train the custom Watson Speech To Text model in the second code pattern from the series.
-
-- `earnings-call-test-data.mp4` - (Duration - 36:08)
-This is the full discussion from the recording which will be used to test the custom Speech To Text model and also to get transcript for further analysis in the third code patten from the series.
-
-- `earnings-call-Q-and-A.mp4` - (Duration - 2:40)
-This is a part of Q & A's asked at the end of the meeting. The purpose of this data is to demonstrate how Watson Speech To Text can detect different speakers from an audio which will be demonstrated in the second code pattern from the series.
-
-In the [next code pattern of the series](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights) we will learn how link all the three code patterns of the series and build a consoladiated application where we can upload Video to get Diarized Text as well as NLU Analysis Report in a single application.
-
-Thus Providing a set of open source tools, backed by IBM Cloud and Watson Services, will enable a better remote employee engagement pulse and will also enable educators to make content available for their students more easily.
+We have seen how to extract meaningful insights from the transcribed text files. In the [next code pattern of the series](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights) we will learn how these three code patterns from the series can be plugged together so that uploading any video will extract audio, transcribe the audio and extract meaningfull insights all in one application.
 
 <!-- keep this -->
 ## License
