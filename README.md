@@ -77,7 +77,7 @@ We will be using the following datasets from the Cloud Object Storage:
 
 ![nlu-service](doc/source/images/nlu-service.png)
 
-- In Natural Language Understanding Dashboard, click on **Services Credentials**
+- In Natural Language Understanding dashboard, click on **Services Credentials**
 
 - Click on **New credential** and add a service credential as shown. Once the credential is created, you can copy the credentials using the small two overlapping squares and save the credentials in a text file for using it in later steps in this code pattern.
 
@@ -89,7 +89,7 @@ We will be using the following datasets from the Cloud Object Storage:
 
 ![tone-service](doc/source/images/tone-service.png)
 
-- In Tone Analyzer Dashboard, click on **Services Credentials**
+- In Tone Analyzer dashboard, click on **Services Credentials**
 
 - Click on **New credential** and add a service credential as shown. Once the credential is created, you can copy the credentials using the small two overlapping squares and save the credentials in a text file for using it in later steps in this code pattern.
 
@@ -164,6 +164,8 @@ $ python app.py
 
 2. Select the entities that you want to extract from the text and click on **Analyze** button as shown. Now the selected entities will be extracted giving an analysis report.
 
+> Note: It should take about 2min to analyze the text, please be patient.
+
 ![step1](doc/source/images/step1.gif)
 
 >- More about the entities:
@@ -179,7 +181,11 @@ $ python app.py
 >   - Watson Natural Language Understanding service. [Learn more](https://cloud.ibm.com/docs/natural-language-understanding?topic=natural-language-understanding-about).
 >   - Watson Tone Analyzer service. [Learn more](https://cloud.ibm.com/docs/tone-analyzer?topic=tone-analyzer-gettingStarted).
 
-- Once the NLU Analysis Report is generated you can review it. The Report consists of `Category`, `Concept`,`Entity` ,`Keywords`,`Sentiments` and `Emotions` extracted by Watson Natural Language Understanding, `Top 5 Positive Sentences` extracted by Watson Tone Analyzer and `Word Clouds`. The Report can be printed by clicking on the `print` button as shown.
+- Once the NLU Analysis Report is generated you can review it. The Report consists of `Category`, `Concept`,`Entity` ,`Keywords`,`Sentiments` and `Emotions` extracted by Watson Natural Language Understanding, `Top 5 Positive Sentences` extracted by Watson Tone Analyzer and `Word Clouds`. 
+
+![](doc/source/images/cp3.png)
+
+- The Report can be printed by clicking on the `print` button as shown.
 
 ![step2](doc/source/images/step2.gif)
 
