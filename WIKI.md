@@ -4,7 +4,7 @@ Use advanced NLP and Tone Analysis to extract meaningful insights.
 
 # Long Title
 
-Use Advanced NLP and Tone Analysis to extract meaningful insights such as Categories, Concepts, Emotion, Entities, Keywords, Sentiment, and positive sentences from a given text file.
+Extract meaningful insights such as Categories, Concepts, Emotions, Entities, Keywords, Sentiments, Top 5 Positive Sentences and Word Clouds from a given text file, using advanced NLP and Tone Analysis.
 
 
 # Author
@@ -23,7 +23,7 @@ Use Advanced NLP and Tone Analysis to extract meaningful insights such as Catego
 
 # Summary
 
-In this code pattern, given a text file, we learn how to extract meaningful insights such as Category, Concepts, Emotion, Entities, Keywords, Sentiment, Top Positive Sentences and Word Clouds using Watson Natural Language Understanding and Tone Analyzer.
+In this code pattern, given a text file, we learn how to extract meaningful insights such as Category, Concepts, Emotion, Entities, Keywords, Sentiment, Top Positive Sentences and Word Clouds using Watson Natural Language Understanding and Watson Tone Analyzer.
 
 # Technologies
 
