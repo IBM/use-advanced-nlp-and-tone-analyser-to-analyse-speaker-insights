@@ -181,7 +181,18 @@ $ python app.py
 >   - Watson Natural Language Understanding service. [Learn more](https://cloud.ibm.com/docs/natural-language-understanding?topic=natural-language-understanding-about).
 >   - Watson Tone Analyzer service. [Learn more](https://cloud.ibm.com/docs/tone-analyzer?topic=tone-analyzer-gettingStarted).
 
-- Once the NLU Analysis Report is generated you can review it. The Report consists of `Category`, `Concept`,`Entity` ,`Keywords`,`Sentiments` and `Emotions` extracted by Watson Natural Language Understanding, `Top 5 Positive Sentences` extracted by Watson Tone Analyzer and `Word Clouds`. 
+- Once the NLU Analysis Report is generated you can review it. The Report consists of:
+    - Features extracted by Watson Natural Language Understanding:
+        1. `Category`: 
+        2. `Entity`: 
+        3. `Concept Tags`: 
+        4. `Keywords`,`Sentiments` and `Emotions`: 
+        
+    - Features extracted by Watson Tone Analyzer:
+        5. `Top 5 Positive Sentences`: 
+    
+    - Other features:
+        6. `Word Clouds`: 
 
 ![](doc/source/images/cp3.png)
 
