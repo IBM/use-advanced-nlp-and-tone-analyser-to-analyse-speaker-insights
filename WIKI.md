@@ -1,10 +1,10 @@
 # Short Title
 
-Use Advanced NLP and Tone Analyser to extract insights
+Use advanced NLP and Tone Analysis to extract meaningful insights.
 
 # Long Title
 
-Use Advanced NLP and Tone Analyser to extract insights such as Categories, Concepts, Emotion, Entities, Keywords, Sentiment, and positive sentences from a text file.
+Use Advanced NLP and Tone Analysis to extract meaningful insights such as Categories, Concepts, Emotion, Entities, Keywords, Sentiment, and positive sentences from a given text file.
 
 
 # Author
@@ -19,11 +19,11 @@ Use Advanced NLP and Tone Analyser to extract insights such as Categories, Conce
 
 
 ### Video Link
-* 
+* https://www.youtube.com/watch?v=lkfxvoD_J0c
 
 # Summary
 
-In this code pattern, given a text file, we learn how to extract insights such as Categories, Concepts, Emotion, Entities, Keywords, Sentiment, and positive sentencesusing Watson Natural Language Understanding and Tone Analyzer.
+In this code pattern, given a text file, we learn how to extract meaningful insights such as Category, Concepts, Emotion, Entities, Keywords, Sentiment, Top Positive Sentences and Word Clouds using Watson Natural Language Understanding and Tone Analyzer.
 
 # Technologies
 
@@ -33,13 +33,9 @@ In this code pattern, given a text file, we learn how to extract insights such a
 
 # Description
 
-This Code Pattern is part of the series [Extracting insights from Videos with IBM Watson]()
+Natural Language Understanding includes a set of text analytics features that can be used to extract meanings from unstructured data such as a text file. Tone Analyzer on the other hand can understand emotions and communication style in a text. We combine the capabilities of both the services to extract meaningful insights from a given text file and generate a report that consists of Category, Concepts, Emotion, Entities, Keywords, Sentiment, Top Positive Sentences and Word Clouds using Python Flask runtime.
 
-Part of the World Health Organization's guidance on limiting further spread of COVID-19 is to practice social distancing. As a result, Companies in most affected areas are taking precautionary measures by encouraging Work from Home and Educational Institutes are closing their facilities. Employees working from home must be aware of the happenings in their company and need to collaborate with their team, students at home must be up to date with their education.
-
-With the help of technology, employees can continue to collaborate and be involved into their work with virtual meetings, schools and teachers can continue to engage with their students through virtual classrooms. These meetings can be recorded and deriving insights from these recordings can be beneficial for the end users.
-
-In this code pattern we will learn how to to extract insights such as Categories, Concepts, Emotion, Entities, Keywords, Sentiment, and positive sentences from a given text file.
+Refer this link for complete details of the series: https://developer.ibm.com/articles/text-mining-and-analysis-from-webex-recordings
 
 # Flow
 
@@ -56,7 +52,7 @@ In this code pattern we will learn how to to extract insights such as Categories
 
 # Instructions
 
-> Find the detailed steps in the [README](https://github.com/IBM/build-custom-stt-model-with-diarization/blob/master/README.md) file.
+> Find the detailed steps in the [README](https://github.com/IBM/use-advanced-nlp-and-tone-analyser-to-analyse-speaker-insights/blob/master/README.md) file.
 
 
 1. Clone the repo
