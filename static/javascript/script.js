@@ -26,6 +26,8 @@ const optional1 = document.getElementById('optional1');
 const optional2 = document.getElementById('optional2');
 const optional3 = document.getElementById('optional3');
 const removeThis = document.getElementById('removeThis');
+const filename = document.getElementById('filename');
+
 var file;
 
 $(document).ready(function() {
@@ -281,9 +283,11 @@ async function analyseText() {
 }
 
 function updateOptions(fileName) {
+    filename.innerHTML = fileName;
     fileNamefromTable.innerHTML = '';
     fileNamefromTable.innerHTML = 'Selected File: <strong>' + fileName + '</strong>';
     analyseBtn.style.display = "block";
+    uploaded2.style.display = "none";
 }
 async function deleteUploadedFile(fileName, fileType) {
     console.log(fileName, fileType);
