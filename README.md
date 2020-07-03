@@ -182,19 +182,29 @@ $ python app.py
 >   - Watson Tone Analyzer service. [Learn more](https://cloud.ibm.com/docs/tone-analyzer?topic=tone-analyzer-gettingStarted).
 
 - Once the NLU Analysis Report is generated you can review it. The Report consists of:
-    - Features extracted by Watson Natural Language Understanding:
-        1. `Category`: 
-        2. `Entity`: 
-        3. `Concept Tags`: 
-        4. `Keywords`,`Sentiments` and `Emotions`: 
-        
-    - Features extracted by Watson Tone Analyzer:
-        5. `Top 5 Positive Sentences`: 
+   
+     - Features extracted by Watson Natural Language Understanding 
     
-    - Other features:
-        6. `Word Clouds`: 
+    - Features extracted by Watson Tone Analyzer:
+   
+     - Other features
 
 ![](doc/source/images/cp3.png)
+
+1. `Category`: As we have used the [IBM earnings call Q1 2019](https://github.com/IBM/extract-audio-from-video#about-the-dataset) meeting recording dataset, you can see that the category was extracted as `finance` specifically `financial news`. 
+
+>Note : You can see the confidence score of the model in green bubble tags.
+
+2. `Entity`: As you can see entity is `Company` specifically `IBM` indicating that, in the video recording most of the emphisis was on the `Company, IBM`.
+
+3. `Concept Tags`: Top 3 concept tags are extracted from the video, `Cloud computing`, `Revenue` and `Income statement` indicating that the speaker spoke about these contexts more often.
+
+4. `Keywords`, `Sentiments` and `Emotions`: Top keywords along with their sentiments and emotions are extracted, giving a sentiment analysis of the entire meeting.
+
+5. `Top Positive Sentences`: Based on emotional tone  and language tone, positive sentences spoken in the video is extracted and is limited to 5 top positive sentences.
+
+6. `Word Clouds`: Based on the keywords, `Nouns & Adjectives` as well as `Verbs` are analyzed, and the result is then turned into word clouds.
+
 
 - The Report can be printed by clicking on the `print` button as shown.
 
