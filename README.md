@@ -1,8 +1,7 @@
-**Work in progress**
-
-# Use Advanced NLP and Tone Analysis to extract insights
+# Use advanced NLP and tone analysis to extract meaningful insights
 
 This Code Pattern is the third part of the series [Extracting Textual Insights from Videos with IBM Watson](). Please complete the [Extract audio from video](https://github.com/IBM/convert-video-to-audio) and [Build custom Speech to Text model with speaker diarization capabilities](https://github.com/IBM/build-custom-stt-model-with-diarization) code patterns of the series before continuing further since all the three code patterns are linked.
+
 
 
 In this code pattern, given a text file, we learn how to extract keywords, emotions, sentiments, positive sentences, and much more using [Watson Natural Language Understanding](https://cloud.ibm.com/catalog/services/natural-language-understanding) and [Tone Analyzer](https://cloud.ibm.com/catalog/services/tone-analyzer).
