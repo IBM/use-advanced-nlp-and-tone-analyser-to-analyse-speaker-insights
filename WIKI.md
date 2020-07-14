@@ -1,6 +1,6 @@
 # Short Title
 
-Use advanced NLP and Tone Analysis to extract meaningful insights.
+Use advanced NLP and tone analysis to extract meaningful insights.
 
 # Long Title
 
